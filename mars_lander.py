@@ -5,6 +5,8 @@ import math
 # the standard input according to the problem statement.
 
 surface_n = int(input())  # the number of points used to draw the surface of Mars.
+print("surface_n:", surface_n, file=sys.stderr, flush=True)
+
 for i in range(surface_n):
     # land_x: X coordinate of a surface point. (0 to 6999)
     # land_y: Y coordinate of a surface point. By linking all the points together in a sequential fashion, you form the surface of Mars.
@@ -21,7 +23,16 @@ while True:
 
     # Write an action using print
     # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+    if v_speed <= -40:
+        power += 1
+    else:
+        power -= 1
+    
+    if power > 4:
+        power -= 1
+    elif power < 0:
+        power += 1
 
 
     # 2 integers: rotate power. rotate is the desired rotation angle (should be 0 for level 1), power is the desired thrust power (0 to 4).
-    print("0 3")
+    print(f"0 {power}")
