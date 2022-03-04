@@ -1,0 +1,75 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+# w: width of the building.
+# h: height of the building.
+w, h = [int(i) for i in input().split()]
+n = int(input())  # maximum number of turns before game over.
+x0, y0 = [int(i) for i in input().split()]
+# initialization   
+x=x0
+y=y0
+xmin = 0
+xmax = w
+ymin = 0
+ymax = h
+
+# game loop
+while True:
+    
+    bomb_dir = input()  # the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
+# for each case we make the movement and we change the upper and lower bounds
+    if bomb_dir == "U":
+        if ymax > y:
+            ymax = y
+        x = x
+        y -= math.ceil((y-ymin)/2)
+    elif bomb_dir == "UR":
+        if xmin < x:
+            xmin = x
+        if ymax > y:
+            ymax = y
+        x += math.ceil((xmax-x)/2)
+        y -= math.ceil((y-ymin)/2)
+    elif bomb_dir == "R":
+        if xmin < x:
+            xmin = x
+        x += math.ceil((xmax-x)/2)
+        y = y
+    elif bomb_dir == "DR":
+        if xmin < x:
+            xmin = x
+        if ymin < y:
+            ymin = y
+        x += math.ceil((xmax-x)/2)
+        y += math.ceil((ymax-y)/2)
+    elif bomb_dir == "D":
+        x = x
+        if ymin < y:
+            ymin = y
+        y += math.ceil((ymax- y)/2)
+    elif bomb_dir == "DL":
+        if xmax > x:
+            xmax = x
+        if ymin < y:
+            ymin = y
+        x -= math.ceil((x-xmin)/2)
+        y += math.ceil((ymax-y)/2)
+    elif bomb_dir == "L":
+        if xmax > x:
+            xmax = x
+        x -= math.ceil((x-xmin)/2)
+        y = y
+    elif bomb_dir == "UL":
+        if xmax > x:
+            xmax = x
+        if ymax > y:
+            ymax = y
+        x -= math.ceil((x-xmin)/2)
+        y -= math.ceil((y-ymin)/2)
+    # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+    # the location of the next window Batman should jump to.
+    print(f"{x} {y}")
