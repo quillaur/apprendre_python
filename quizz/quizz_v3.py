@@ -41,7 +41,6 @@ q_a = {
 def answer_is_correct(q: str, r: str) -> bool:
     """
     Fonction permettant de vérifier que la réponse donné par l'utilisateur est la bonne réponse à la question posée.
-
     Args:
         q:
         r:
