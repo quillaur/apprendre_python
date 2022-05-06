@@ -55,6 +55,9 @@ while turns % 2 == 0:
     print("Ce chiffre n'est pas impair !")
     turns = ask_number("Entre un chiffre IMPAIR entre 1 et 10 stp: ", 1, 10)
 
+# Définir les coups gagnants.
+gagnant = [('r', 'c'), ('c', 'p'), ('p', 'r')]
+
 # Tant que les joueurs sont execo.
 while user_wins == computer_wins:
     # On boucle sur le nombre de tour.
@@ -78,23 +81,15 @@ while user_wins == computer_wins:
         print("L'ordinateur a choisi:", options[computer_pick] + ".")
 
         # On vérifi qui gagne.
-        if user_input == "r" and computer_pick == "c":
-            print("Tu gagnes !")
+        if (user_input, computer_pick) in gagnant:
+            print("Tu as gagné !")
             user_wins += 1
 
-        elif user_input == "p" and computer_pick == "r":
-            print("Tu gagnes !")
-            user_wins += 1
-
-        elif user_input == "c" and computer_pick == "p":
-            print("Tu gagnes !")
-            user_wins += 1
-        
         elif user_input == computer_pick:
-            print("Egalité. Personne ne gagne de point !")
+            print("Egalité")
 
         else:
-            print("Perdu !")
+            print("Tu as perdu")
             computer_wins += 1
 
     print("Score:", user_wins, "/", computer_wins, "(you / computer)")
