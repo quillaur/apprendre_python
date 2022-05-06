@@ -54,12 +54,14 @@ while True:
         print("Trop grand !")
         too_big = True
         # Conserver uniquement les valeurs en dessous du chiffre donné.
-        all_values = all_values[:all_values.index(user_guess)]
+        if user_guess in all_values:
+            all_values = all_values[:all_values.index(user_guess)]
     else:
         print("Trop petit !")
         too_big = False
         # Conserver uniquement les valeurs au dessus du chiffre donné.
-        all_values = all_values[all_values.index(user_guess)+1:]
+        if user_guess in all_values:
+            all_values = all_values[all_values.index(user_guess)+1:]
     
     # Donner le prochain tour à l'autre joueur.
     my_turn = not my_turn
@@ -67,4 +69,4 @@ while True:
 if my_turn:
     print("Bien joué ! Tu as trouvé le bon chiffre en ", guesses, "coups et avant l'ordinateur !")
 else:
-    print("L'ordinateur gagne ! Il as trouvé le bon chiffre en", guesses + 1, "coups et avant toi !")
+    print("L'ordinateur gagne ! Il as trouvé le bon chiffre en", guesses, "coups et avant toi !")
