@@ -1,2 +1,2 @@
-# studi_algo_python
-Ce répertoire contient tous les codes des sessions lives de STUDI sur le langage python.
+# learn_python
+Ce répertoire contient tous les codes / activitées que j'utilise pour enseigner le langage python.
