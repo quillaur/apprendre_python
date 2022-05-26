@@ -34,25 +34,36 @@ def load_key() -> str:
     return key
 
 
-def view() -> None:
+def view_credentials(fernet: Fernet) -> None:
     """
     Méthode pour voir les identifiants / mots de passes stockés dans passwords.txt.
     """
-    with open('passwords.txt', 'r') as f:
-        for line in f.readlines():
-            user, passw = line.strip().split("|")
-            print("User:", user, "| Password:", fer.decrypt(passw.encode()).decode())
+    print("Identifiants / MDP stockés:")
+    if exists("password.txt"):
+        with open("password.txt", "rb") as f:
+            for line in f.readlines():
+                credentials = fernet.decrypt(line)
+
+                id, mdp = credentials.decode("utf-8").split(" | ")
+                print(f"""
+                        Identifiant: {id}
+                        MDP: {mdp}
+                        """)
+    else:
+        print("WARNING ! : aucun mots de passe sauvegardés jusqu'à présent.")
 
 
-def add() -> None:
+def store_credentials(id: str, password: str, fernet: Fernet) -> None:
     """
     Méthode pour écrires les identifiants / mots de passes dans passwords.txt.
     """
-    name = input("Nom de compte: ")
-    pwd = input("MDP: ")
+    credentials = f"{id} | {password}"
+    token = fernet.encrypt(credentials.encode())
 
-    with open('passwords.txt', 'a') as f:
-        f.write(name + "|" + fer.encrypt(pwd.encode()).decode() + "\n")
+    with open("password.txt", "a") as f:
+        f.write(token.decode("utf-8") + "\n")
+    
+    print(credentials, "stocké.")
 
 
 if __name__ == '__main__':
@@ -61,9 +72,9 @@ if __name__ == '__main__':
     # alors il faut la générer et la sauvegarder dans un fichier.
     if not os.path.exists("key.key"):
         write_key()
-
-    # Chargeons la clef.
-    key = load_key()
+    else:
+        # Chargeons la clef.
+        key = load_key()
 
     # On insère notre clef dans l'algorithme de cryptographie.
     fer = Fernet(key)
@@ -84,9 +95,13 @@ if __name__ == '__main__':
             break
         
         if mode == "voir":
-            view()
+            view_credentials(fer)
+
         elif mode == "ajouter":
-            add()
+            id = input("Entrer l'identifiant à stoker: ")
+            mdp = input("Entrer le mot de passe à stocker: ")
+            store_credentials(id, mdp, fer)
+            
         else:
             print("La réponse donnée n'est pas correcte.")
             continue
