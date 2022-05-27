@@ -21,8 +21,8 @@ if response.status_code == 200:
     # On récupère le contenu de la réponse au format json.
     data = response.json()
     # Le json se manipule comme un dictionnaire en python.
-    weather = data['weather'][0]['description']
-    temperature = round(data["main"]["temp"], 2)
+    weather = " | ".join(elem['description'] for elem in data['weather'])
+    temperature = data["main"]["temp"]
 
     print("Temps:", weather)
     print("Temperature:", temperature, "dégrées")
