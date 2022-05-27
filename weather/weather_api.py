@@ -11,7 +11,7 @@ BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 city = input("Pour quelle ville dois-je récupérer les données ? ")
 
 # On construit la requête.
-request_url = f"{BASE_URL}?appid={API_KEY}&q={city}"
+request_url = f"{BASE_URL}?appid={API_KEY}&q={city}&units=metric&lang=fr"
 
 # On envoie la demande.
 response = requests.get(request_url)
@@ -22,7 +22,7 @@ if response.status_code == 200:
     data = response.json()
     # Le json se manipule comme un dictionnaire en python.
     weather = data['weather'][0]['description']
-    temperature = round(data["main"]["temp"] - 273.15, 2)
+    temperature = round(data["main"]["temp"], 2)
 
     print("Temps:", weather)
     print("Temperature:", temperature, "dégrées")
