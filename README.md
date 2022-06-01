@@ -1,2 +1,2 @@
 # Apprendre le langage python 3
-Ce répertoire contient tous les codes / activitées que j'utilise pour enseigner le langage python.
+Ce répertoire contient tous les codes / activitées que j'utilise pour enseigner le langage python, la data science et la programmation dynamique.
