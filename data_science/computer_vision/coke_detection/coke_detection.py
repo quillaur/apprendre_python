@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import cv2
-from cv2 import cvtColor
 
 # Object lower and higher hue (for HSV mask purpose)
 profils = {
@@ -26,7 +25,7 @@ if uploaded_file is not None:
     frame = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
 
     # Switch to HSV for simplier color handling.
-    hsv = cvtColor(frame, cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
     # lower_h, upper_h = st.slider("Select a hue range:", 0, 360, (0,360))
     
@@ -42,18 +41,23 @@ if uploaded_file is not None:
         # Find the object based on the mask.
         contours, hierarchy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
-        # Get the biggest contour
-        biggest = sorted(contours,key = cv2.contourArea, reverse=True)[0]
+        # If we found something.
+        if contours:
+            # Get the biggest contour
+            contour = sorted(contours, key = cv2.contourArea, reverse=True)[0]
 
-        # Create rectangle from the biggest contour
-        rect = cv2.boundingRect(biggest)
-        x,y,w,h = rect
+            # To see all detected boxes.
+            # for contour in contours:
 
-        # Draw rectangle on original image
-        cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,255), 2)
+            # Create rectangle from the biggest contour
+            rect = cv2.boundingRect(contour)
+            x,y,w,h = rect
 
-        # Add name of the object
-        cv2.putText(frame, object_name, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
+            # Draw rectangle on original image
+            cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,255), 2)
+
+            # Add name of the object
+            cv2.putText(frame, object_name, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
 
     # Show the result.
     # Convert to RGB for matplotlib proper color rendering.
