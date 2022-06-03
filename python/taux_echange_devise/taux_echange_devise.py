@@ -3,6 +3,8 @@ import sqlite3
 from datetime import datetime
 import os
 
+# API doc available at: https://www.exchangerate-api.com/docs/overview
+
 
 def load_api_key(key_path: str) -> str:
     """
