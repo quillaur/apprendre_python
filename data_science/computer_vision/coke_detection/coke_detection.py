@@ -38,6 +38,8 @@ if uploaded_file is not None:
         # Create the mask.
         mask = cv2.inRange(hsv, (lower_h,100,100), (upper_h,255,255))
 
+        # st.image(mask)
+
         # Find the object based on the mask.
         contours, hierarchy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
