@@ -7,4 +7,4 @@ Data science is a field that uses scientific methods, processes, and systems to 
 * [Computer Vision](https://github.com/quillaur/data_learning/tree/main/data_science/computer_vision)
 
 # Credits
-This page has been made with the help of [Open AI ChatGTP](https://chat.openai.com/).
+This page has been made with (but not only) the help of [Open AI ChatGTP](https://chat.openai.com/).
