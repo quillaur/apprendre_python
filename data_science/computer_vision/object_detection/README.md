@@ -1,7 +1,9 @@
 # Object Detection
 
+
 ## Introduction
 Begin by introducing the concept of object detection and its applications in fields such as computer vision, robotics, and autonomous vehicles.
+Image object detection is the process of identifying and localizing objects within an image. It involves determining the location and size of objects in an image and classifying them into predefined categories. This can be a useful technique for a variety of applications, such as security and surveillance, self-driving cars, and robotics. Object detection algorithms typically work by training a machine learning model on a large dataset of images labeled with bounding boxes around the objects of interest. The model is then able to predict the locations and classes of objects in new images.
 
 ## Fundamentals
 Introduce the fundamentals of machine learning and explain how object detection models work. 
@@ -32,3 +34,7 @@ Cover techniques for improving the performance of object detection models, such 
 
 ## Limitations and on-going research.
 Finally, discuss the limitations of current object detection approaches and potential future directions for research in this field.
+
+
+# Credits
+This description and plan has been made by a series of prompts using [Open AI ChatGTP](https://chat.openai.com/).
