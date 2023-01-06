@@ -37,4 +37,4 @@ Finally, discuss the limitations of current object detection approaches and pote
 
 
 # Credits
-This description and plan has been made by a series of prompts using [Open AI ChatGTP](https://chat.openai.com/).
+This page has been made with the help of [Open AI ChatGTP](https://chat.openai.com/).
