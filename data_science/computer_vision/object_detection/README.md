@@ -23,8 +23,8 @@ There are several different approaches to object detection, including classical 
 Popular object detection algorithms include the Viola-Jones algorithm (Haar cascade) and Yolo (SSD).
 
 To dive into these algorithm, I recommand being familiar with these first:
-    * [AdaBoost](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning/AdaBoost)
-    * [CNN](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning/CNN)
+* [AdaBoost](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning/AdaBoost)
+* [CNN](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning/CNN)
 
 ### Haar cascade
 The Viola-Jones algorithm is a popular object detection algorithm that is used to detect objects in images. It was developed by Paul Viola and Michael Jones in 2001 and has since been widely used in a variety of applications, including face detection, pedestrian detection, and vehicle detection.
