@@ -5,7 +5,7 @@ In machine learning, an algorithm is trained on a data set. The algorithm then m
 
 There are three main types of machine learning: supervised learning, unsupervised learning, and reinforcement learning. 
 
-## [Supervised learning]()
+## [Supervised learning](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning)
 In supervised learning, the algorithm is trained on a labeled data set, where the correct output is provided for each example in the data set. 
 
 ## Unsupervised learning

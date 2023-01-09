@@ -23,7 +23,8 @@ There are several different approaches to object detection, including classical 
 Popular object detection algorithms include the Viola-Jones algorithm (Haar cascade) and Yolo (SSD).
 
 To dive into these algorithm, I recommand being familiar with these first:
-    * [AdaBoost](https://www.youtube.com/watch?v=LsK-xG1cLYA)
+    * [AdaBoost](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning/AdaBoost)
+    * [CNN](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning/CNN)
 
 ### Haar cascade
 The Viola-Jones algorithm is a popular object detection algorithm that is used to detect objects in images. It was developed by Paul Viola and Michael Jones in 2001 and has since been widely used in a variety of applications, including face detection, pedestrian detection, and vehicle detection.
@@ -33,16 +34,15 @@ The Viola-Jones algorithm works by training a classifier to detect objects in im
 One of the key strengths of the Viola-Jones algorithm is that it is fast and efficient, making it well-suited for real-time object detection tasks. However, it is not as accurate as some more recent object detection algorithms, such as those based on deep learning.
 
 Here are some nice videos to further understand this topic: 
-* [Object Detection with HAAR Cascade Classifiers](https://www.youtube.com/watch?v=kThRJyQCW-8)
-
-### CNN
-A CNN (Convolutional Neural Network) is a type of neural network designed for image classification and recognition tasks. It is particularly well suited to processing data with a grid-like topology, such as an image, and is particularly effective at identifying patterns and features in images.
-
-CNNs are composed of multiple layers of interconnected neurons. The layers of a CNN are made up of convolutional layers, activation layers, pooling layers, and fully connected layers. The convolutional layers apply a convolution operation to the input data, which helps to extract features from the data. The activation layers apply an activation function to the output of the convolutional layers, which helps to introduce nonlinearity into the model. The pooling layers reduce the spatial size of the data, which helps to reduce the computational burden of the model and makes it more robust to small translations in the input data. The fully connected layers combine the features extracted by the convolutional and pooling layers and use them to make a prediction.
-
-CNNs have been very successful at a wide range of image classification and recognition tasks and are a key component of many state-of-the-art object detection and image segmentation algorithms.
+* [exter minar: Object Detection with HAAR Cascade Classifiers](https://www.youtube.com/watch?v=kThRJyQCW-8)
+* [Data Academy: Object Detection with Haar Cascade Classifier](https://www.youtube.com/watch?v=kq9PQIOgYIQ)
 
 ### SSD
+A single shot detector (SSD) is a type of object detection algorithm that is designed to be fast and efficient. Single shot detectors work by making predictions about the locations and classes of objects within an image in a single pass, rather than using a multi-stage approach like some other object detection algorithms.
+
+Single shot detectors are typically implemented using convolutional neural networks (CNNs). They use a CNN to process the input image and predict the locations and classes of objects within the image. The CNN is trained to output a set of bounding boxes and class probabilities for each object in the image.
+
+One of the key advantages of single shot detectors is that they are able to run in real-time, making them well-suited for applications that require fast object detection. They are also relatively simple to implement and can be trained to detect a wide variety of object classes. However, they may not be as accurate as some other object detection algorithms that use a multi-stage approach.
 
 ### Yolo
 
