@@ -1,2 +1,9 @@
-# Apprendre le langage python 3
-Ce répertoire contient tous les codes / activitées que j'utilise pour enseigner le langage python, la data science et la programmation dynamique.
+# About this repo
+You will find here all of what I use to teach / mentor my classes.
+
+Enjoy !
+
+# Content
+* [Data Science](https://github.com/quillaur/data_learning/tree/main/data_science)
+* [Python3](https://github.com/quillaur/data_learning/tree/main/python)
+* [Dynamic Programming](https://github.com/quillaur/data_learning/tree/main/dynamic_programming)

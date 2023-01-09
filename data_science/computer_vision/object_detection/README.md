@@ -29,6 +29,8 @@ The Viola-Jones algorithm works by training a classifier to detect objects in im
 
 One of the key strengths of the Viola-Jones algorithm is that it is fast and efficient, making it well-suited for real-time object detection tasks. However, it is not as accurate as some more recent object detection algorithms, such as those based on deep learning.
 
+Here is a nice video explanation of the topic => [exter minar: Object Detection with HAAR Cascade Classifiers](https://www.youtube.com/watch?v=kThRJyQCW-8)
+
 ### CNN
 
 ### SSD
