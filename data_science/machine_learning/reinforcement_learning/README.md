@@ -5,6 +5,9 @@
 Exemple: [solving the frozen lake with a q table](https://github.com/quillaur/data_learning/blob/main/data_science/machine_learning/reinforcement_learning/frozen_lake_q_table.ipynb).
 
 ## DQN
+DQN (Deep Q-Network) is a type of reinforcement learning algorithm that uses a neural network to approximate the Q-value function. It is used to train an agent to make decisions in an environment by maximizing the expected cumulative reward. The DQN algorithm was first introduced in a 2015 paper by Google DeepMind, and has since been used in many RL applications.
+
+Exemple: [solving the CartPole with a DQN agent](https://github.com/quillaur/data_learning/blob/main/data_science/machine_learning/reinforcement_learning/cartpole_dqn_test).
 
 ## PPO
 Proximal Policy Optimization (PPO) is a reinforcement learning (RL) algorithm that is designed to optimize the policy of an agent in a computationally efficient manner. PPO is an on-policy RL algorithm, which means that it uses the agent's current policy to generate data and update the policy.
