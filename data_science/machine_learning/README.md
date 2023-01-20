@@ -11,15 +11,8 @@ In supervised learning, the algorithm is trained on a labeled data set, where th
 ## Unsupervised learning
 In unsupervised learning, the algorithm is not provided with labeled training examples, and must find patterns and relationships in the data on its own. 
 
-## Reinforcement learning
+## [Reinforcement learning](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning)
 In reinforcement learning, the algorithm learns by interacting with its environment and receiving rewards or penalties for certain actions.
-
-Suggested readings:
-* "Reinforcement Learning" by Andrej Karpathy (https://karpathy.github.io/2016/05/31/rl/)
-* "Deep Reinforcement Learning Hands-On" by Maxim Lapan (https://medium.com/@m.lapan/deep-reinforcement-learning-hands-on-part-i-q-learning-double-q-learning-and-prioritized-experience-replay-44ab5d87a2c)
-* "RL Adventure" by Thomas Simonini (https://simoninithomas.github.io/Deep_reinforcement_learning_Course/)
-* "Reinforcement Learning" by Pieter Abbeel and John Schulman (http://rail.eecs.berkeley.edu/deeprlcourse/)
-* "RL Course by David Silver" (http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html)
 
 ## Applications
 Machine learning has a wide range of applications, including image and speech recognition, natural language processing, fraud detection, and self-driving cars.
