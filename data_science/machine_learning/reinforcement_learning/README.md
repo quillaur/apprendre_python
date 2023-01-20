@@ -2,7 +2,7 @@
 
 ## Q table
 
-Exemple: [solving the frozen lake with a q table](https://colab.research.google.com/drive/1_MdDwZKi2DG_8t2kzBLEr_D664j1U09w?usp=share_link).
+Exemple: [solving the frozen lake with a q table](https://github.com/quillaur/data_learning/blob/main/data_science/machine_learning/reinforcement_learning/frozen_lake_q_table.ipynb).
 
 ## DQN
 
@@ -18,6 +18,7 @@ It is a widely used algorithm in RL because of its good performance and stabilit
 ## Actor & Critics
 
 ## Suggested readings:
+* [Full course by Alexander Vandekleut](https://alexandervandekleut.github.io/)
 * "Reinforcement Learning" by Andrej Karpathy (https://karpathy.github.io/2016/05/31/rl/)
 * "Deep Reinforcement Learning Hands-On" by Maxim Lapan (https://medium.com/@m.lapan/deep-reinforcement-learning-hands-on-part-i-q-learning-double-q-learning-and-prioritized-experience-replay-44ab5d87a2c)
 * "RL Adventure" by Thomas Simonini (https://simoninithomas.github.io/Deep_reinforcement_learning_Course/)
