@@ -11,7 +11,7 @@ In supervised learning, the algorithm is trained on a labeled data set, where th
 ## Unsupervised learning
 In unsupervised learning, the algorithm is not provided with labeled training examples, and must find patterns and relationships in the data on its own. 
 
-## [Reinforcement learning](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/supervised_learning)
+## [Reinforcement learning](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/reinforcement_learning)
 In reinforcement learning, the algorithm learns by interacting with its environment and receiving rewards or penalties for certain actions.
 
 ## Applications
