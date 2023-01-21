@@ -6,7 +6,7 @@ import gym
 import matplotlib.pyplot as plt
 from tqdm.notebook import trange
 
-from utils import VectorizedEnvWrapper, ReplayBuffer
+from utils import ReplayBuffer
 
 
 class Agent:
@@ -56,24 +56,23 @@ class Agent:
         # in one batch is a list of: [state, action, reward, state_next, done]
         X = []
         y = []
-        for batch in batches:
             
-            actual_states = [np.array(s[0]) for s in batch]
-            actual_preds = self.Q.predict(actual_states)
-            next_states = [np.array(s[3]) for s in batch]
-            target_preds = self.Q_.predict(next_states)
+        actual_states = np.array([s[0] for s in batches])
+        actual_preds = self.Q.predict(actual_states)
+        next_states = np.array([s[3] for s in batches])
+        target_preds = self.Q_.predict(next_states)
 
-            for index, (state, action, reward, next_state, trunc, done) in enumerate(batch):
-                if (not done) and (not trunc):
-                    max_future_q = reward + self.discount_factor * np.max(target_preds[index])
-                else:
-                    max_future_q = reward
+        for index, (state, action, reward, next_state, trunc, done) in enumerate(batches):
+          if (not done) and (not trunc):
+              max_future_q = reward + self.discount_factor * np.max(target_preds[index])
+          else:
+              max_future_q = reward
 
-                current_qs = actual_preds[index]
-                current_qs[action] = (1 - self.learning_rate) * current_qs[action] + self.learning_rate * max_future_q
+          current_qs = actual_preds[index]
+          current_qs[action] = (1 - self.learning_rate) * current_qs[action] + self.learning_rate * max_future_q
 
-                X.append(state)
-                y.append(current_qs)
+          X.append(state)
+          y.append(current_qs)
         
         self.Q.fit(X, y, batch_size=32, verbose=0, shuffle=True)
             
@@ -81,14 +80,14 @@ class Agent:
 
 
 def train(env_name, T=20000, num_envs=32, batch_size=32, sync_every=100, hidden_sizes=[24, 24], alpha=0.001, gamma=0.95):
-    env = VectorizedEnvWrapper(lambda: gym.make(env_name), num_envs)
+    env = gym.vector.make(env_name, num_envs=num_envs)
     state_shape = env.observation_space.shape
-    num_actions = env.action_space.n
+    num_actions = env.single_action_space.n
     agent = Agent(state_shape, num_actions, num_envs, alpha=alpha, hidden_sizes=hidden_sizes, gamma=gamma)
     rewards = []
     buffer = ReplayBuffer()
     episode_rewards = 0
-    state = env.reset()
+    state, info = env.reset()
     for t in trange(T):
         if t%sync_every == 0:
             agent.synchronize()

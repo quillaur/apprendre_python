@@ -32,28 +32,3 @@ class DiscreteToBoxWrapper(gym.ObservationWrapper):
         return new_obs
 
 
-
-class VectorizedEnvWrapper(gym.Wrapper):
-    def __init__(self, make_env, num_envs=1):
-        super().__init__(make_env())
-        self.num_envs = num_envs
-        self.envs = [make_env() for env_index in range(num_envs)]
-    
-    def reset(self):
-        return np.asarray([env.reset() for env in self.envs])
-    
-    def reset_at(self, env_index):
-        return self.envs[env_index].reset()
-    
-    def step(self, actions):
-        next_states, rewards, dones, truncs, infos = [], [], [], [], []
-        for env, action in zip(self.envs, actions):
-            next_state, reward, done, trunc, info = env.step(action)
-            next_states.append(next_state)
-            rewards.append(reward)
-            truncs.append(trunc)
-            dones.append(done)
-            infos.append(info)
-        return np.asarray(next_states), np.asarray(rewards), \
-            np.asarray(dones), np.asarray(infos)
-
