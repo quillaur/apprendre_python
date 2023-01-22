@@ -45,7 +45,10 @@ class Agent:
     def act(self, s_t):
         if np.random.rand() < self.epsilon:
             return np.random.randint(self.num_actions, size=self.num_envs)
-        return np.argmax(self.Q(s_t), axis=1)
+
+        preds = self.Q.predict(np.array([s_t]), verbose=0)
+        # print(preds.shape)
+        return np.argmax(preds[0], axis=1)
     
     def decay_epsilon(self, n):
         self.epsilon = max(
@@ -53,34 +56,41 @@ class Agent:
             self.epsilon_i - (n/self.n_epsilon)*(self.epsilon_i - self.epsilon_f))
 
     def update(self, batches):
-        # in one batch is a list of: [state, action, reward, state_next, done]
+        # Batches is a list of batch
+        # One batch contains 6 arrays (one for all states, one for all actions etc...) 
+        # of shape env_num, n possibiles (action, obs, etc...)
         X = []
         y = []
-            
+
         actual_states = np.array([s[0] for s in batches])
-        actual_preds = self.Q.predict(actual_states)
+        actual_preds = self.Q.predict(actual_states, verbose=0)
         next_states = np.array([s[3] for s in batches])
-        target_preds = self.Q_.predict(next_states)
+        target_preds = self.Q_.predict(next_states, verbose=0)
 
-        for index, (state, action, reward, next_state, trunc, done) in enumerate(batches):
-          if (not done) and (not trunc):
-              max_future_q = reward + self.discount_factor * np.max(target_preds[index])
-          else:
-              max_future_q = reward
+        for x, (states, actions, rewards, next_states, truncs, dones) in enumerate(batches):
 
-          current_qs = actual_preds[index]
-          current_qs[action] = (1 - self.learning_rate) * current_qs[action] + self.learning_rate * max_future_q
+          for i in range(len(states)):
+            
+            if (not dones[i]) and (not truncs[i]):
+                max_future_q = rewards[i] + self.discount_factor * np.max(target_preds[x][i])
+            else:
+                max_future_q = rewards[i]
 
-          X.append(state)
-          y.append(current_qs)
+            act = actions[i]
+            current_qs = actual_preds[x][i]
+            current_qs[act] = (1 - self.learning_rate) * current_qs[act] + self.learning_rate * max_future_q
+
+            y.append(current_qs)
+          
+          X.extend(states)
         
-        self.Q.fit(X, y, batch_size=32, verbose=0, shuffle=True)
+        self.Q.fit(np.array([X]), np.array([y]), batch_size=32, verbose=0, shuffle=True)
             
 
 
 
 def train(env_name, T=20000, num_envs=32, batch_size=32, sync_every=100, hidden_sizes=[24, 24], alpha=0.001, gamma=0.95):
-    env = gym.vector.make(env_name, num_envs=num_envs)
+    env = gym.vector.make(env_name, asynchronous=False, num_envs=num_envs)
     state_shape = env.observation_space.shape
     num_actions = env.single_action_space.n
     agent = Agent(state_shape, num_actions, num_envs, alpha=alpha, hidden_sizes=hidden_sizes, gamma=gamma)
@@ -101,11 +111,12 @@ def train(env_name, T=20000, num_envs=32, batch_size=32, sync_every=100, hidden_
         agent.decay_epsilon(t/T)
         episode_rewards += reward
 
-        for i in range(env.num_envs):
+        # https://www.gymlibrary.dev/content/vectorising/
+        for i in range(num_envs):
             if done[i] or trunc[i]:
                 rewards.append(episode_rewards[i])
                 episode_rewards[i] = 0
-                state[i] = env.reset_at(i)
+                # state[i] = env[i].reset()
             
     # plot(pd.DataFrame(rewards), window=10)
     plt.plot(rewards)
