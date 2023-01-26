@@ -1,0 +1,24 @@
+# Deep Q-Network
+DQN (Deep Q-Network) is a type of reinforcement learning (RL) algorithm that combines Q-learning with deep neural networks. Q-learning is a model-free RL algorithm that uses a Q-table to store the estimated value of taking a specific action in a given state. However, Q-tables can become impractical when the state space is large or continuous. DQN addresses this problem by using a deep neural network to approximate the Q-table. The neural network takes in the current state as input and outputs the estimated value of each action. DQNs also use a technique called experience replay, which stores a replay buffer of past experiences (state, action, reward, next state) and samples from it to train the network. Additionally, DQNs use a target network which is a separate network used to produce the target Q-value for training the primary network. DQNs were first introduced in a 2015 Nature paper by Mnih et al. and have been used to achieve state-of-the-art results on a variety of Atari games and other tasks.
+
+# Experience Replay
+Experience replay is a technique used in DQNs to help improve the stability and performance of the training process. The idea behind experience replay is to store a replay buffer of past experiences (state, action, reward, next state) and to use these experiences to train the network. This allows the network to learn from a diverse set of experiences, rather than just the most recent experience. Additionally, by sampling experiences randomly from the replay buffer, the algorithm can break any temporal correlations that may exist in the data.
+
+When the agent interacts with the environment, the current experience (state, action, reward, next state) is stored in a replay buffer. The replay buffer has a fixed size, so when it becomes full, the oldest experiences are replaced with new ones. During the training process, the network is updated by randomly sampling a batch of experiences from the replay buffer. This is done by selecting a random index from the replay buffer and using the corresponding experience to update the network.
+
+The experience replay technique has several benefits for DQNs. It helps to decorrelate the training data, which improves the stability and performance of the learning process. It also allows the network to learn from a diverse set of experiences, which can help to improve the generalization of the learned policy. Additionally, by keeping the experiences in a replay buffer, the algorithm can learn from experiences that occurred many time steps ago, rather than just the most recent experiences. This can help to improve the long-term performance of the agent.
+
+# Target Network
+The use of a target network is another technique used in DQNs to improve the stability and performance of the learning process. The target network is a separate copy of the primary network, which is used to produce the target Q-values for training the primary network. The primary network is used to select actions and to approximate the Q-function, while the target network is used to produce the target Q-values.
+
+The target network is updated less frequently than the primary network. Typically, the target network is updated every few iterations or episodes. This means that the target Q-values are based on the parameters of the primary network from several iterations ago. This is done to stabilize the training process and to reduce the correlation between the target Q-values and the action selected by the primary network.
+
+The primary network is trained by minimizing the difference between its predicted Q-values and the target Q-values. These target Q-values are calculated by taking the maximum Q-value over all actions in the next state, which is estimated by the target network. The primary network will adjust its parameters in a way that will make its predictions closer to the target.
+
+The use of a separate target network can help to reduce the correlation between the target Q-values and the action selected by the primary network. It also ensures that the primary network is not chasing its own tail i.e. the primary network updates its parameters based on the estimation of Q-values that are based on the current parameters of the network. This can help to improve the stability and performance of the learning process.
+
+# Implementation(s):
+* [solving the CartPole with a DQN agent](https://github.com/quillaur/data_learning/blob/main/data_science/machine_learning/reinforcement_learning/dqn/cartpole_dqn_test.ipynb).
+
+# Credits
+This page has been made with (but not only) the help of [Open AI ChatGTP](https://chat.openai.com/).

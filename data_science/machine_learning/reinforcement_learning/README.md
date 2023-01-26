@@ -4,7 +4,7 @@
 
 Exemple: [solving the frozen lake with a q table](https://github.com/quillaur/data_learning/blob/main/data_science/machine_learning/reinforcement_learning/frozen_lake_q_table.ipynb).
 
-## DQN
+## [DQN](https://github.com/quillaur/data_learning/tree/main/data_science/machine_learning/reinforcement_learning/dqn)
 DQN (Deep Q-Network) is a type of reinforcement learning algorithm that uses a neural network to approximate the Q-value function. It is used to train an agent to make decisions in an environment by maximizing the expected cumulative reward. The DQN algorithm was first introduced in a 2015 paper by Google DeepMind, and has since been used in many RL applications.
 
 Exemple: [solving the CartPole with a DQN agent](https://github.com/quillaur/data_learning/blob/main/data_science/machine_learning/reinforcement_learning/dqn/cartpole_dqn_test.ipynb).
@@ -22,11 +22,6 @@ It is a widely used algorithm in RL because of its good performance and stabilit
 
 ## Suggested readings:
 * [Full course by Alexander Vandekleut](https://alexandervandekleut.github.io/)
-* "Reinforcement Learning" by Andrej Karpathy (https://karpathy.github.io/2016/05/31/rl/)
-* "Deep Reinforcement Learning Hands-On" by Maxim Lapan (https://medium.com/@m.lapan/deep-reinforcement-learning-hands-on-part-i-q-learning-double-q-learning-and-prioritized-experience-replay-44ab5d87a2c)
-* "RL Adventure" by Thomas Simonini (https://simoninithomas.github.io/Deep_reinforcement_learning_Course/)
-* "Reinforcement Learning" by Pieter Abbeel and John Schulman (http://rail.eecs.berkeley.edu/deeprlcourse/)
-* "RL Course by David Silver" (http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html)
 
 # Credits
 This page has been made with (but not only) the help of [Open AI ChatGTP](https://chat.openai.com/).
